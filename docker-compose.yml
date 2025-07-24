@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    
+  php:
+    build: ./nginx
+    volumes:
+      - .:/var/www/html
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: AppDaf
+      POSTGRES_USER: ousmane
+      POSTGRES_PASSWORD: ousmane00
+    ports:
+      - "5433:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@appdaf.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+    pgdata:
+    pgadmin-data:

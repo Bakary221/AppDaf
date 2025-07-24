@@ -1,0 +1,31 @@
+{
+    "name": "ousmane-marra/app-daff",
+    "description": "ousmane/appdaff",
+    "autoload": {
+        "psr-4": {
+            "App\\entity\\": "src/entity/",
+            "App\\service\\": "src/service/",
+            "App\\repository\\": "src/repository/",
+            "App\\core\\": "app/core/",
+            "App\\core\\abstract\\": "config/core/abstract",
+            "App\\controller\\": "src/controller/",
+            "App\\router\\": "route/",
+            "App\\core\\middlewares\\": "config/core/middlewares"
+        }
+    },
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sco2000",
+            "email": "ousmanemarra70@gmail.com"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "scripts": {
+    "database:migrate": "php migrations/migration.php",
+    "database:seeder":"php seeders/seeder.php"
+  }
+}
